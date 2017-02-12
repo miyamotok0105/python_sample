@@ -1,10 +1,26 @@
 # -*- coding: utf-8 -*-
+#use:
+#python opencv_labeling.py img/520f8a8d.jpg
+
 import cv2
 import numpy as np
+import sys
+
+args = sys.argv
+
+if (len(args) != 2):
+    print 'Usage: python arg1 '
+    quit()
+
+image_path = ""
+if str(args[1]) == "":
+    image_path = "img/520f8a8d.jpg"
+else:
+    image_path = str(args[1])
 
 def main():
     # 入力画像の取得
-    im = cv2.imread("img/520f8a8d.jpg")
+    im = cv2.imread(image_path)
     # グレースケール変換
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     # 2値化
