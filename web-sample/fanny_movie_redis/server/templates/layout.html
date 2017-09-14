@@ -1,0 +1,46 @@
+
+<head>
+  <title>違法動画リンク館</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/blog.min.css') }}" />
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/hilite.css') }}" />
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  {% block extra_scripts %}{% endblock %}
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1>Retwis</h1>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        {% if not session.username %}
+          <a href="{{ url_for('login') }}">log in</a>
+        {% else %}
+          <a href="{{ url_for('logout') }}">log out</a>
+        {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="main-body">
+  <div class="container">
+    {% block body %}{% endblock %}
+  </div>
+</div>
+
+
+

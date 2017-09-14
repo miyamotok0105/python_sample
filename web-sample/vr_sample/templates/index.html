@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Demo</title>
+</head>
+<body>
+
+<!-- http://qiita.com/miyamotok0105/items/b12984cb71f7df95bc13 -->
+
+    <div id="vrview"></div>
+
+    <script>
+      window.addEventListener('load', onVrViewLoad);
+        function onVrViewLoad() {
+        var vrView = new VRView.Player('#vrview', {
+          image: 'https://2.bp.blogspot.com/-kvvsZ0F0kNE/V-PagLs7Y8I/AAAAAAABqfE/YTKbIkgE1n8yvsGI3Y2WDc3YXG-Ka5hiACKgB/s1600/nikon_keymission_360_still_image.jpg',
+        });
+      }
+    </script>
+    <!--ちゃんとサーバー上に画像を載せる必要がある-->
+<!--     <script>
+      window.addEventListener('load', onVrViewLoad);
+        function onVrViewLoad() {
+        var vrView = new VRView.Player('#vrview', {
+          image: 'static/img/nikon_keymission_360_still_image.jpg',
+        });
+      }
+    </script> -->
+
+    <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+</body>    
+</html>
