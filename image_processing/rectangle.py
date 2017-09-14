@@ -19,7 +19,7 @@ cv2.imwrite('img/rect_detect_edged.jpg', edged)
 _, rect_contours, _= cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 rect_and_contours = np.copy(img)
 
-min_rect_area = 10
+min_rect_area = 60
 large_contours = [cnt for cnt in rect_contours if cv2.contourArea(cnt) > min_rect_area]
 cv2.drawContours(rect_and_contours, large_contours, -1, (255,0,0))
 print('number of img: %d' % len(large_contours))

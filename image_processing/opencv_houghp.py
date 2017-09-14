@@ -7,10 +7,31 @@ args = sys.argv
 
 image_path = ""
 if len(args) < 2:
-    image_path = "img/520f8a8d.jpg"
+    image_path = "img/igo.jpg"
 else:
     image_path = str(args[1])
 
+#-----------------------------------------------------------------------------
+# img = cv2.imread(image_path)
+# gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+# edges = cv2.Canny(gray,50,150,apertureSize = 3)
+# cv2.imwrite('img/opencv_houghp_canny.jpg',edges)
+# minLineLength=100
+# lines = cv2.HoughLinesP(image=edges,rho=0.5,theta=np.pi/180, threshold=280,lines=np.array([]), minLineLength=minLineLength,maxLineGap=1000)
+
+# if lines is not None:
+#     print("find! "+ str(len(lines)))
+#     a,b,c = lines.shape
+#     for i in range(a):
+#         cv2.line(img, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (196, 0, 204), 3, cv2.LINE_AA)
+#         # cv2.imwrite('houghlines5.jpg',gray)
+
+# while True:
+#   cv2.imshow("data",img)
+#   a = cv2.waitKey(10)
+#   if a>0:
+#       if a == 27:
+#           break
 
 #-----------------------------------------------------------------------------
 # img = cv2.imread(image_path)
@@ -147,10 +168,10 @@ for line in lines:
         cv2.line(thresh,(x1,y1),(x2,y2),(0),5)
 
 kernel = np.ones((3,3),np.uint8)
-thresh = cv2.dilate(thresh,kernel,iterations = 10)
+thresh = cv2.dilate(thresh,kernel,iterations = 70)
 _,contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
-minArea=5000 #nothing
-print len(contours)
+minArea=10000 #nothing
+# print len(contours)
 for cnt in contours:
     area=cv2.contourArea(cnt)
     if(area>minArea):
@@ -166,6 +187,8 @@ while True:
 	if a>0:
 		if a == 27:
 			break
+
+
 
 
 

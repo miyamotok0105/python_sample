@@ -37,8 +37,8 @@ def main():
 
 
     # ラベル付けした各マスクを色付け
-    for y in xrange(0, gray.shape[0]):
-        for x in xrange(0, gray.shape[1]):
+    for y in range(0, gray.shape[0]):
+        for x in range(0, gray.shape[1]):
             if label[y, x] > 0:
                 im[y, x] = rgbs[label[y, x]]
             else:

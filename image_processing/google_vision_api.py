@@ -8,6 +8,7 @@ import json
 import requests
 api_url = 'https://vision.googleapis.com/v1/images:annotate?key='
 api_key = os.environ.get('GOOGLE_API')
+print(api_key)
 
 with open(sys.argv[1], 'rb') as image:
     base64_image = base64.b64encode(image.read())
@@ -43,4 +44,4 @@ with open(sys.argv[1], 'rb') as image:
         else:
             print("not detec")
     else:
-        print('Http response error')
+        print('Http response error ', response.status_code)

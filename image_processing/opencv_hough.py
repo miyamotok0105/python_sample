@@ -13,8 +13,10 @@ else:
 
 img = cv2.imread(image_path)
 
-gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-edges = cv2.Canny(gray,50,150,apertureSize = 3)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 50, 100)
+# gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+# edges = cv2.Canny(gray,50,150,apertureSize = 3)
 
 lines = cv2.HoughLines(edges,1,np.pi/180,50)
 # lines = cv2.HoughLines(edges,1,np.pi/180,15)
