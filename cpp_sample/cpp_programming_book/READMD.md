@@ -12,6 +12,9 @@
 
 3.17 矩形領域のピクセル値をサブピクセル精度で取得する   
 
+# 環境構築
+
+https://qiita.com/miyamotok0105/items/49c3561b5cb4d29b67b2   
 
 # 参考
 
