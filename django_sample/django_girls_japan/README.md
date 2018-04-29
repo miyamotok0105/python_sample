@@ -1,13 +1,15 @@
 
-# プロジェクトを作成しよう
+# django girlsの内容をdjango2系に変更してやってみた。
 
-django2系を使用。
+https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/
+
+# プロジェクトを作成しよう
 
 ## 新規作成
 
 
 ```
-django-admin startproject mysite .
+django-admin startproject mysite
 ```
 
 これができる
@@ -610,6 +612,36 @@ base側に下記を。
 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>の場合は
 post_detailビューへのパス。    
 
+
+ルーティングする。
+URL: http://127.0.0.1:8000/post/1/にアクセスしたい。    
+
+
+```:blog/urls.py
+from django.conf.urls import include, url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.post_list),
+    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+]
+```
+
+^で始まるのは文字開始の意味。post/ はURLにpostと/を含んでいる。(?P<pk>[0-9]+) はdef post_detail(request, pk):のviewの引数と繋がってる。
+pathでも書き換えれるし、re_pathなども使える。    
+
+
+```:blog/urls.py
+from django.conf.urls import include, url
+from . import views
+urlpatterns = [
+    # url(r'^$', views.post_list, name='post_list'),
+    path('', views.post_list, name='post_list'),
+    # url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+    path('post/<int:pk>', views.post_detail, name='post_detail'),
+]
+```
+
 ## post_detail view
 
 
@@ -637,10 +669,102 @@ touch blog/templates/blog/post_detail.html
 
 
 
+# フォームを作ろう
+
+フォームを追加
 
 
+```
+touch blog/forms.py
+```
 
 
+```:blog/forms.py
+from django import forms
+
+from .models import Post
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'text',)
+```
+
+ルーティングを追加
+
+
+```:blog/urls.py
+# coding: utf-8
+#Djangoのメソッドと、blogアプリの全てのビューをインポート
+from django.conf.urls import include, url
+from django.urls import path
+from . import views
+#URLパターンを追加
+#^$というパターンのURLをpost_listというビューに割り当てた
+#^$は空文字
+urlpatterns = [
+    # url(r'^$', views.post_list, name='post_list'),
+    path('', views.post_list, name='post_list'),
+    # url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+    path('post/<int:pk>', views.post_detail, name='post_detail'),
+    url(r'^post/new/$', views.post_new, name='post_new'),
+    path('post_list_at_order/<int:order>', views.post_list_at_order, name='post_list_at_order'),
+]
+
+```
+
+viewを追加
+
+post_newメソッド追加とforms.pyのインポート。
+
+
+```:blog/views.py
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from .models import Post
+from .forms import PostForm
+
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_list_at_order(request, order):
+    #orderの場所から20post表示する
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')[order:20]
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
+
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+```
+
+テンプレート追加
+
+
+```
+touch blog/templates/blog/post_edit.html
+```
+
+csrf_tokenがformをセキュアにしてる。
+
+
+```:blog/templates/blog/post_edit.html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+```
 
 
 
