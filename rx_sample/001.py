@@ -1,5 +1,6 @@
 import signal
 import rx
+from rx.subjects import Subject
 from rx import Observable, Observer
 
 Observable.from_("abcabc").to_set().subscribe(print)
