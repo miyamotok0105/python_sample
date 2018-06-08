@@ -71,3 +71,24 @@ if data[:8] == valid_png_header:
 ```
 
 
+
+# 参考
+
+Python3書籍    
+http://apprize.info/python/introducing/7.html    
+https://gist.github.com/Boyden/9211dffdeac64516ac2953484f4b1f02    
+今更バイナリ。。。    
+http://deutschina.hatenablog.com/entry/2016/01/24/013000    
+Python公式    
+https://docs.python.jp/3.5/library/struct.html    
+PNGフォーマット    
+https://www.setsuki.com/hsp/ext/png.htm    
+
+Python で png 画像を自力で生成するAdd Star    
+http://d.hatena.ne.jp/c-yan2/20100317/1268825146    
+Working with Binary Data in Python    
+https://www.devdungeon.com/content/working-binary-data-python    
+
+
+
+
