@@ -138,6 +138,78 @@ class ImageForm(forms.ModelForm):
 ```
 
 
+# 複数画像ファイルアップロード
+
+url.pyに追記.    
+
+```
+url(r'^upload_save/$', views.upload_save, name='upload_save'),
+```
+
+html追加.    
+
+
+```html:images_edit.html
+{% extends 'upload_image/base.html' %}
+
+{% block content %}
+    <h1>New post multiple</h1>
+    <form action="{% url 'upload_save' %}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>
+        <input type="hidden" value="{{ p_id }}" name="p_id">
+        {% csrf_token %}
+        <input type="submit">
+    </form>
+{% endblock %}
+
+```
+
+
+ビューにも追加.    
+多分もっと削れるけど、処理の肝はrequest.FILES.getlist("files[]")でfilesをとって    
+filesを回してモデルにsaveしてるところ。    
+
+
+```py:view.py
+
+
+def images_new(request):
+    print("request", request)
+    if request.method == "POST":
+        print("post")
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("is valid")
+            image = form.save(commit=False)
+            image.save()
+            return redirect(image_detail, pk=image.pk)
+        else:
+            print("not valid")
+    else:
+        print("get")
+        form = ImageForm()
+    return render(request, 'upload_image/images_edit.html', {'form': form})
+
+
+def upload_save(request):
+    photo_id = request.POST.get("p_id", "")
+    print("photo_id", photo_id)
+    # photo_obj = Photo.objects.get(id=photo_id)
+    files = request.FILES.getlist("files[]")
+    print("files", files)
+    for f in files:
+        i = Image.objects.create()
+        i.image_path = f
+        i.save()
+    print("create row!")
+    return redirect(image_list)
+
+
+```
+
+こっちはサクッと動いた。
+単一ファイルで動けば複数にするのは簡単だった。    
+
 
 # 参考
 
