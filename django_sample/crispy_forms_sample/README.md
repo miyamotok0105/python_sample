@@ -48,9 +48,11 @@ python manage.py shell
 
 from upload_image.models import Image
 Image.objects.all()
+Image.objects.all().values()
 Image.objects.all().delete()
 Image.objects.filter(image_id=1).values()
 Image.objects.filter(image_id=2).delete()
+Image.objects.create(image_id=3)
 
 image_list = Image.objects.order_by('-published_date')[:5]
 image_list
