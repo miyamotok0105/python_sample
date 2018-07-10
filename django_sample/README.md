@@ -25,6 +25,14 @@ A Complete Beginner's Guide to Django
 https://simpleisbetterthancomplex.com/series/2017/09/18/a-complete-beginners-guide-to-django-part-3.html
     
 
+
+# How to
+
+- フォームの作り方
+
+https://github.com/miyamotok0105/python_sample/commit/6861daa647c97a519ce39528d49222a39330a162
+
+
 - todo.    
 
 https://qiita.com/narupo/items/2e90953545c7f94431cd
