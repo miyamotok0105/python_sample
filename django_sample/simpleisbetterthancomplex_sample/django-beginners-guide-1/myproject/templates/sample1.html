@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Sample1</li>
+{% endblock %}
+
+{% block content %}
+  <div class="mb-4">
+    <a href="{% url 'new_sample1' %}" class="btn btn-primary">New sample1</a>
+  </div>
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sample1 in sample1_all %}
+        <tr>
+          <td>
+            <small class="text-muted d-block">{{ sample1.name }}</small>
+          </td>
+          <td>
+            <small class="text-muted d-block">{{ sample1.description }}</small>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

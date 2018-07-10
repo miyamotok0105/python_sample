@@ -4,8 +4,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Board, Topic, Post
-
+from .models import Board, Topic, Post, Sample1
 from .models import Board
 
 def home(request):
@@ -53,4 +52,21 @@ def new_topic(request, pk):
 def board_topics2(request, pk):
     board = get_object_or_404(Board, pk=pk)
     return render(request, 'topics.html', {'board': board})
+
+def sample1(request):
+    sample1_all = Sample1.objects.all()
+    return render(request, 'sample1.html', {'sample1_all': sample1_all})
+
+def new_sample1(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        description = request.POST['description']
+        sample1 = Sample1.objects.create(
+            name=name,
+            description=description
+        )
+        return redirect('sample1')
+    return render(request, 'new_sample1.html')
+
+
 
