@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset="UTF-8">
+<title>{% block title %}{% endblock %} - Flask sample</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1></h1>
+  <ul>
+    <li>
+        TOP
+    </li>
+    <li>
+        <form action='login' method='POST'>
+            <input type='text' name='email' id='email' placeholder='email'/>
+            <input type='password' name='password' id='password' placeholder='password'/>
+            <input type='submit' name='submit'/>
+        </form>
+    </li>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+
+  {% block content %}{% endblock %}
+</section>

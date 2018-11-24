@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}本文{% endblock %}</h1>
+
+  <img src="./images/html5.png" alt="HTML5ロゴ">
+{% endblock %}
+
+{% block content %}
+本文
+
+ユーザー名：
+{{ username }}
+
+
+posts：
+
+{% for post in posts %}
+    {{ post }}
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}本文{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+本文
+
+ユーザー名：
+{{ username }}
+
+
+posts：
+
+{% for post in posts %}
+    {{ post }}
+{% endfor %}
+
+
+{% endblock %}
