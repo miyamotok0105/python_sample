@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+html{
+    font-size:62.5%;
+}
+
+body{
+    font-family: Helvetica,Arial,YuGothic,"游ゴシック体","Yu Gothic","游ゴシック","ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+    font-size:1.4rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+a {
+    color: #db5424;
+}
+
+.siteTitle {
+    background: #EA671A;
+    color: #FCFCE9;
+    font-size: 2.8rem;
+    padding: 35px 0;
+}
+
+.heading_01 {
+    background: #260000;
+    color: #ffffff;
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.heading_02 {
+    border-bottom: 1px solid #db5424;
+    color: #db5424;
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.mb_10 {
+    margin-bottom: 10px;
+}
+
+.bg_html {
+    background: #E65127;
+}
+
+.bg_html_desc {
+    background: #F4825D;
+}
+
+.bg_css {
+    background: #0C73B8;
+}
+
+.bg_css_desc {
+    background: #30AADD;
+}
+
+.bg_js {
+    background: #EBA32A;
+}
+
+.bg_js_desc {
+    background: #F2BF26;
+}
+
+.role {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.role * {
+    padding: 10px;
+}
+
+.role dt {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.role dd {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.caption {
+    color: #db5424;
+    font-size: 1.2rem;
+}
+
+.copy {
+    background: #EA671A;
+    color: #ffffff;
+    font-size: 1.6rem;
+    padding: 10px 0;
+}
+
+

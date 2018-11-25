@@ -1,0 +1,28 @@
+/* material */
+
+body {
+    font-family: Helvetica,Arial,YuGothic,"游ゴシック体","Yu Gothic","游ゴシック","ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+    font-size:1.4rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* cards */
+.demo-card-wide.mdl-card {
+  width: 512px;
+  text-align: center;
+  vertical-align:middle;
+  display: flex;
+}
+.demo-card-wide > .mdl-card__title {
+  align-items: flex-start;
+  color: #fff;
+  height: 176px;
+  background: url('/static/img/HTML5.png') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+/* Lists */
+
