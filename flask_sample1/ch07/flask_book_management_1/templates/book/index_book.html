@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <h1 style="margin-bottom:50px">書籍一覧</h1>
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+
+    <a class="h3" href="{{ url_for('book.create_book') }}">書籍の新規追加</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>著者・作者</th>
+                <th>出版社</th>
+                <th>編集</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.auther }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>
+                    <a href="{{ url_for('book.update_book', book_id=book.id) }}">編集</a>｜
+                    <a href="{{ url_for('book.delete_book', book_id=book.id) }}">削除</a>
+                </td>
+            </tr>
+            {% else %}
+            <td>書籍が登録されていません</td>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
