@@ -1,6 +1,12 @@
 
 
-認証作業
+# 認証作業
+
+多分２通りある。    
+
+- API キー    
+- 設定とサービス アカウントの設定    
+
 
 gcloud auth login
 gcloud auth application-default login

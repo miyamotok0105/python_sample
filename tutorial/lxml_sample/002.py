@@ -1,7 +1,6 @@
 # pip install html5print
 
 from lxml import etree
-import xml.dom.minidom as md
 import xml.etree.ElementTree as ET
 
 root = etree.Element("html")
