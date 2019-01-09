@@ -54,7 +54,27 @@ for option in topic.options.all():
 
 # 参考
 
+- Simple Python Framework from Scratch    
+
+http://mattscodecave.com/posts/simple-python-framework-from-scratch.html
+
+- Flaskで作る簡易分析ツール1    
+
+https://www.python.ambitious-engineer.com/archives/1640
+
+- Introduction to Flask    
+
+https://www.rithmschool.com/courses/flask-fundamentals/introduction-to-flask
+
+- Flask by example    
+
+https://danidee10.github.io/2016/09/24/flask-by-example-3.html
+
+
+
 https://danidee10.github.io/2016/09/18/flask-by-example-1.html
 https://danidee10.github.io/blog/page2/
+
+
 
 
