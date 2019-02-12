@@ -16,6 +16,11 @@ python app.py
 # swaggerについて
 
 
+これでイジイジしてgenerateしなさいよ。    
+https://editor.swagger.io/
+    
+
+
 ## swaggerの書き方
 
 ファイルパスを変更した場合。    
