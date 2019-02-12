@@ -19,7 +19,8 @@ paths:
     get:
       #呼び出されるHTTP request関数を指定。
       #"<package_name>.<package_name>.<package_name>.<function_name>"
-      operationId: people.read_all
+      operationId: read_all
+      x-swagger-router-controller: models.people
       #グルーピングを定義
       tags:
         - People
@@ -50,7 +51,8 @@ paths:
     #postです。
     post:
       #呼び出されるHTTP request関数を指定。
-      operationId: people.create
+      operationId: create
+      x-swagger-router-controller: models.people
       tags:
         - People
       #メモ書き
@@ -78,7 +80,8 @@ paths:
   #URI
   /people/{lname}:
     get:
-      operationId: people.read_one
+      operationId: read_one
+      x-swagger-router-controller: models.people
       tags:
         - People
       summary: Read one person from the people list
@@ -103,7 +106,8 @@ paths:
                 type: string
 
     put:
-      operationId: people.update
+      operationId: update
+      x-swagger-router-controller: models.people
       tags:
         - People
       summary: Update a person in the people list
@@ -129,7 +133,8 @@ paths:
           description: Successfully updated person in people list
 
     delete:
-      operationId: people.delete
+      operationId: delete
+      x-swagger-router-controller: models.people
       tags:
         - People
       summary: Delete a person from the people list
@@ -149,7 +154,8 @@ paths:
     get:
       #呼び出されるHTTP request関数を指定。
       #"<package_name>.<package_name>.<package_name>.<function_name>"
-      operationId: people.read_all
+      operationId: read_all
+      x-swagger-router-controller: models.people
       #グルーピングを定義
       tags:
         - People

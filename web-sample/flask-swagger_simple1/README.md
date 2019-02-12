@@ -16,14 +16,42 @@ python app.py
 # swaggerについて
 
 
+## swaggerの書き方
+
+ファイルパスを変更した場合。    
+
+```
+paths:
+  #URI
+  /people:
+    #getメソッド使用。
+    get:
+      #呼び出されるHTTP request関数を指定。
+      #メソッド名を指定。
+      operationId: read_all
+      #ファイルの場所。modelsフォルダのpeopleファイルを使用する。
+      x-swagger-router-controller: models.people
+```
+
+## 設定
+
+
+```
 http://localhost:8080/api/ui/#/
+```
 
 
-## GET /people
+## GET /api/people
 
 Try it out!をクリック。    
 
-## POST /people
+
+```
+http://localhost:8080/api/people
+```
+
+
+## POST /api/people
 
 
 ```
@@ -35,7 +63,7 @@ Try it out!をクリック。
 
 Try it out!をクリック。    
 
-## GET /people/{lname}
+## GET /api/people/{lname}
 
 lname    
 
@@ -46,7 +74,7 @@ kei1
 Try it out!をクリック。    
 
 
-## PUT /people/{lname}
+## PUT /api/people/{lname}
 
 lname    
 
@@ -64,7 +92,7 @@ kei1
 Try it out!をクリック。    
 
 
-## DELETE /people/{lname}
+## DELETE /api/people/{lname}
 
 
 lname    
@@ -76,6 +104,12 @@ kei1
 Try it out!をクリック。    
 
 
+## GET /api-models/user
+
+
+```
+http://localhost:8080/api-models/user
+```
 
 
 # 参考

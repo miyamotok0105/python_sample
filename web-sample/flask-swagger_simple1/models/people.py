@@ -37,6 +37,7 @@ def read_all():
     """
     
     # Create the list of people from our data
+    print("read_all!!")
     return [PEOPLE[key] for key in sorted(PEOPLE.keys())]
 
 
@@ -48,6 +49,7 @@ def read_one(lname):
     :return:        person matching last name
     """
     # Does the person exist in people?
+    print("read_one!!")
     if lname in PEOPLE:
         person = PEOPLE.get(lname)
     
@@ -67,6 +69,8 @@ def create(person):
     :param person:  person to create in people structure
     :return:        201 on success, 406 on person exists
     """
+
+    print("create!!")
     lname = person.get("lname", None)
     fname = person.get("fname", None)
 
@@ -94,6 +98,8 @@ def update(lname, person):
     :param person:  person to update
     :return:        updated person structure
     """
+
+    print("update!!")
     # Does the person exist in people?
     if lname in PEOPLE:
         PEOPLE[lname]["fname"] = person.get("fname")
@@ -113,6 +119,8 @@ def delete(lname):
     :param lname:   last name of person to delete
     :return:        200 on successful delete, 404 if not found
     """
+
+    print("delete!!")
     # Does the person to delete exist?
     if lname in PEOPLE:
         del PEOPLE[lname]
