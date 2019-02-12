@@ -142,3 +142,38 @@ paths:
       responses:
         200:
           description: Successfully deleted a person from people list
+
+  #URI
+  /people:
+    #
+    get:
+      #呼び出されるHTTP request関数を指定。
+      #"<package_name>.<package_name>.<package_name>.<function_name>"
+      operationId: people.read_all
+      #グルーピングを定義
+      tags:
+        - People
+      #メモ書き
+      summary: Read the entire list of people
+      description: Read the list of people
+      #パラメータ
+      parameters:
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering people
+          required: false
+      #レスポンス
+      responses:
+        200:
+          description: Successfully read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string

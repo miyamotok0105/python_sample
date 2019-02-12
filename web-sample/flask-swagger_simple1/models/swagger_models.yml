@@ -1,0 +1,76 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api-models
+
+# Paths supported by the server application
+paths:
+  #=============================================
+  #URI
+  /user:
+    #
+    get:
+      operationId: read_all
+      x-swagger-router-controller: models.user
+      #グルーピングを定義
+      tags:
+        - People
+      #メモ書き
+      summary: Read the entire list of people
+      description: Read the list of people
+      #パラメータ
+      parameters:
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering people
+          required: false
+      #レスポンス
+      responses:
+        200:
+          description: Successfully read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string
+    # #postです。
+    # post:
+    #   #呼び出されるHTTP request関数を指定。
+    #   operationId: user.create
+    #   tags:
+    #     - People
+    #   #メモ書き
+    #   summary: Create a person and add it to the people list
+    #   description: Create a new person in the people list
+    #   #パラメータ
+    #   parameters:
+    #     - name: person
+    #       in: body
+    #       description: Person to create
+    #       required: True
+    #       schema:
+    #         type: object
+    #         properties:
+    #           fname:
+    #             type: string
+    #             description: First name of person to create
+    #           lname:
+    #             type: string
+    #             description: Last name of person to create
+    #   #レスポンス
+    #   responses:
+    #     201:
+    #       description: Successfully created person in list
