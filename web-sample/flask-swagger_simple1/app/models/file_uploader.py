@@ -12,7 +12,6 @@ def create(file):
     data = request.files['file'].read()
     stream = io.BytesIO(data)
     img = Image.open(stream)
-    print(img)
     img.save('./app/static/img/test_dog1.png')
 
 

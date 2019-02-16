@@ -23,19 +23,67 @@ class BaseTestCase(TestCase):
 class TestFileUploaderModel(BaseTestCase):
 
     def test_create(self):
-        content_type = 'image/png'
         file_name = "./app/test/dog1.png"
         data = {}
         image_raw = open(file_name, 'rb')
         data['file'] = (image_raw, file_name)
-        
         response = self.client.open(
             '/file_uploader',
             method='POST',
             data=data,
             content_type='multipart/form-data')
-        
         self.assertEqual(response.status_code, 201)
+
+    def test_create_no_file(self):
+        data = {}
+        response = self.client.open(
+            '/file_uploader',
+            method='POST',
+            data=data,
+            content_type='multipart/form-data')
+        self.assertEqual(response.status_code, 400)
+
+    def test_create_ather_type_param(self):
+        data = {}
+        data['file'] = "string!!!"
+        response = self.client.open(
+            '/file_uploader',
+            method='POST',
+            data=data,
+            content_type='multipart/form-data')
+        self.assertEqual(response.status_code, 400)
+
+    def test_create_ather_type_param2(self):
+        data = {}
+        data['file'] = 11111
+        response = self.client.open(
+            '/file_uploader',
+            method='POST',
+            data=data,
+            content_type='multipart/form-data')
+        self.assertEqual(response.status_code, 400)
+
+    def test_create_other_param(self):
+        data = {}
+        data['file1'] = 11111
+        response = self.client.open(
+            '/file_uploader',
+            method='POST',
+            data=data,
+            content_type='multipart/form-data')
+        self.assertEqual(response.status_code, 400)
+
+    def test_create_other_param2(self):
+        data = {}
+        data['file'] = 11111
+        data['file2'] = 11111
+        response = self.client.open(
+            '/file_uploader',
+            method='POST',
+            data=data,
+            content_type='multipart/form-data')
+        self.assertEqual(response.status_code, 400)
+
 
 
 if __name__ == '__main__':
