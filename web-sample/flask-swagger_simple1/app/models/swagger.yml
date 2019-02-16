@@ -8,31 +8,20 @@ consumes:
 produces:
   - application/json
 
-basePath: /api-models
-
-# Paths supported by the server application
+basePath: /
 paths:
-  #=============================================
-  #URI
   /user:
-    #
     get:
       operationId: read_all
-      x-swagger-router-controller: models.user
-      #グルーピングを定義
+      x-swagger-router-controller: app.models.user
       tags:
-        - People
-      #メモ書き
-      summary: Read the entire list of people
-      description: Read the list of people
-      #パラメータ
+        - User
       parameters:
         - name: offset
           in: query
           type: integer
           description: Offset from beginning of list where to start gathering people
           required: false
-      #レスポンス
       responses:
         200:
           description: Successfully read people list operation
@@ -46,6 +35,24 @@ paths:
                   type: string
                 timestamp:
                   type: string
+  /file_uploader:
+    post:
+      operationId: create
+      x-swagger-router-controller: app.models.file_uploader
+      tags:
+        - Upload
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+      #レスポンス
+      responses:
+        201:
+          description: Success
+  
     # #postです。
     # post:
     #   #呼び出されるHTTP request関数を指定。

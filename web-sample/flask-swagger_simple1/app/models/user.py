@@ -33,8 +33,8 @@ def read_all():
 
 
 
-# def create(person):
-#     print("create!!")
+def create(person):
+    print("create!!")
 #     lname = person.get("lname", None)
 #     fname = person.get("fname", None)
 
