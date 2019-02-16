@@ -9,7 +9,15 @@ pip install -r requirements.txt
 起動    
 
 ```
-python app.py
+python main.py
+```
+
+
+テストコード    
+
+
+```
+test.sh
 ```
 
 
@@ -109,12 +117,7 @@ kei1
 Try it out!をクリック。    
 
 
-## GET /api-models/user
 
-
-```
-http://localhost:8080/api-models/user
-```
 
 
 # 参考
