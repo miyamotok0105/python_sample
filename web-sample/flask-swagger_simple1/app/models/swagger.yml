@@ -7,13 +7,12 @@ consumes:
   - application/json
 produces:
   - application/json
-
 basePath: /
 paths:
   /user:
     get:
       operationId: read_all
-      x-swagger-router-controller: app.models.user
+      x-swagger-router-controller: app.controllers.user_controller
       tags:
         - User
       parameters:
@@ -38,7 +37,7 @@ paths:
   /file_uploader:
     post:
       operationId: create
-      x-swagger-router-controller: app.models.file_uploader
+      x-swagger-router-controller: app.controllers.file_uploader_controller
       tags:
         - Upload
       consumes:
@@ -53,31 +52,3 @@ paths:
         201:
           description: Success
   
-    # #postです。
-    # post:
-    #   #呼び出されるHTTP request関数を指定。
-    #   operationId: user.create
-    #   tags:
-    #     - People
-    #   #メモ書き
-    #   summary: Create a person and add it to the people list
-    #   description: Create a new person in the people list
-    #   #パラメータ
-    #   parameters:
-    #     - name: person
-    #       in: body
-    #       description: Person to create
-    #       required: True
-    #       schema:
-    #         type: object
-    #         properties:
-    #           fname:
-    #             type: string
-    #             description: First name of person to create
-    #           lname:
-    #             type: string
-    #             description: Last name of person to create
-    #   #レスポンス
-    #   responses:
-    #     201:
-    #       description: Successfully created person in list

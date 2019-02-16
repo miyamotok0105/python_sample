@@ -35,7 +35,7 @@ class TestFileUploaderModel(BaseTestCase):
             data=data,
             content_type='multipart/form-data')
         
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
 
 
 if __name__ == '__main__':
