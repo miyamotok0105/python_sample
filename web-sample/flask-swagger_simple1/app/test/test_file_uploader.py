@@ -10,6 +10,7 @@ from flask import request, jsonify
 
 from flask_testing import TestCase
 
+from ..models import files
 
 class BaseTestCase(TestCase):
 
@@ -27,12 +28,33 @@ class TestFileUploaderModel(BaseTestCase):
         data = {}
         image_raw = open(file_name, 'rb')
         data['file'] = (image_raw, file_name)
+        data['output_file_name'] = "test_dog1.png"
+        data['count'] = 2
         response = self.client.open(
             '/file_uploader',
             method='POST',
             data=data,
             content_type='multipart/form-data')
         self.assertEqual(response.status_code, 201)
+
+    # def test_create_multi_file(self):
+    #     file_name = "./app/test/dog1.png"
+    #     data = {}
+    #     image_raw = open(file_name, 'rb')
+    #     file = (image_raw, file_name)
+    #     files = files()
+    #     files.add_file("test_dog1.png", file)
+    #     files.add_file("test_dog2.png", file)
+    #     data['files'] = files.file_array
+        
+    #     # data['output_file_name'] = ""
+    #     # data['output_file2_name'] = ""
+    #     response = self.client.open(
+    #         '/file_uploader_2file',
+    #         method='POST',
+    #         data=data,
+    #         content_type='multipart/form-data')
+    #     self.assertEqual(response.status_code, 201)
 
     def test_create_no_file(self):
         data = {}

@@ -34,6 +34,39 @@ paths:
                   type: string
                 timestamp:
                   type: string
+    post:
+      operationId: insert
+      x-swagger-router-controller: app.controllers.user_controller
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      tags:
+        - User
+      parameters:
+        - name: user
+          in: body
+          required: True
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+              lname:
+                type: string
+      responses:
+        200:
+          description: Successfully read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string
   /file_uploader:
     post:
       operationId: create
@@ -43,12 +76,41 @@ paths:
       consumes:
         - multipart/form-data
       parameters:
-        - in: formData
-          name: file
+        - name: file
+          in: formData
           type: file
           required: true
-      #レスポンス
+        - name: output_file_name
+          in: formData
+          type: string
+          required: true
+        - name: count
+          in: formData
+          type: integer
+          required: true
       responses:
         201:
           description: Success
-  
+  # /multi_file_uploader:
+  #   post:
+  #     operationId: create_multi_file
+  #     x-swagger-router-controller: app.controllers.file_uploader_controller
+  #     tags:
+  #       - Upload
+  #     consumes:
+  #       - multipart/form-data
+  #     parameters:
+  #       - name: files
+  #         properties:
+  #           items:
+  #           - name: file_name
+  #             in: formData
+  #             type: string
+  #             required: true
+  #           - name: file
+  #             in: formData
+  #             type: file
+  #             required: true
+  #     responses:
+  #       201:
+  #         description: Success

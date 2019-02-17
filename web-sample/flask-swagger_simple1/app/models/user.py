@@ -8,7 +8,7 @@ from flask import make_response, abort
 def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
 
-PEOPLE = {
+USER = {
     "Farrell": {
         "fname": "Doug",
         "lname": "Farrell",
@@ -28,9 +28,26 @@ PEOPLE = {
 
 
 def read_all():
-    return [PEOPLE[key] for key in sorted(PEOPLE.keys())]
+    return [USER[key] for key in sorted(USER.keys())]
 
-def create(person):
-    print("create!!")
-#     lname = person.get("lname", None)
-#     fname = person.get("fname", None)
+def insert(user):
+    print(user)
+    def get_timestamp():
+        return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
+    USER["lname_new1"] = {
+            "lname": "lname",
+            "fname": "fname",
+            "timestamp": get_timestamp(),
+    }
+
+
+if __name__ == '__main__':
+
+    USER["lname_new1"] = {
+            "lname": "lname",
+            "fname": "fname",
+            "timestamp": get_timestamp(),
+    }
+    # print(USER)
+
+
