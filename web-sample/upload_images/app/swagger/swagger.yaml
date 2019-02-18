@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  description: hoge
+  version: 1.0.0
+  title: Swagger
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: petstore.swagger.io
+basePath: /v2
+schemes:
+  - https
+  - http
+paths:
+  /sample:
+    get:
+      operationId: sample
+      x-swagger-router-controller: app.sample.sample
+      tags:
+        - Sample
+      parameters:
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering people
+          required: false
+      responses:
+        200:
+          description: Successfully read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string
