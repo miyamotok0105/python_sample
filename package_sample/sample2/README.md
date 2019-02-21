@@ -8,7 +8,6 @@ python gcp_ocr_package/ocr.py image/eng-768x1024.jpg
 ```
 
 
-
 パッケージ入れる    
 
 

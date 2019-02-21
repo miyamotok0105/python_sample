@@ -29,17 +29,16 @@ def draw_boxes(image, bounds, color):
     return image
 
 
-def get_document_bounds(image_file, feature):
+def get_document_bounds(image_content, feature):
     # [START vision_document_text_tutorial_detect_bounds]
     """Returns document bounds given an image."""
     client = vision.ImageAnnotatorClient()
 
     bounds = []
 
-    with io.open(image_file, 'rb') as image_file:
-        content = image_file.read()
 
-    image = types.Image(content=content)
+
+    image = types.Image(content=image_content)
 
     response = client.document_text_detection(image=image)
     document = response.full_text_annotation
@@ -70,15 +69,15 @@ def get_document_bounds(image_file, feature):
     return bounds
 
 
-def render_doc_text(filein, fileout):
-    image = Image.open(filein)
-    bounds = get_document_bounds(filein, FeatureType.PAGE)
+def render_doc_text(image, image_content, fileout):
+    
+    bounds = get_document_bounds(image_content, FeatureType.PAGE)
     draw_boxes(image, bounds, 'blue')
     print("PAGE：", bounds)
-    bounds = get_document_bounds(filein, FeatureType.PARA)
+    bounds = get_document_bounds(image_content, FeatureType.PARA)
     draw_boxes(image, bounds, 'red')
     print("PARA：", bounds)
-    bounds = get_document_bounds(filein, FeatureType.WORD)
+    bounds = get_document_bounds(image_content, FeatureType.WORD)
     draw_boxes(image, bounds, 'yellow')
     print("WORD：", bounds)
 
@@ -94,8 +93,12 @@ if __name__ == '__main__':
     parser.add_argument('detect_file', help='The image for text detection.')
     parser.add_argument('-out_file', help='Optional output file', default=0)
     args = parser.parse_args()
-
     parser = argparse.ArgumentParser()
-    render_doc_text(args.detect_file, args.out_file)
+
+    image = Image.open(args.detect_file)
+    with io.open(args.detect_file, 'rb') as image_file:
+        image_content = image_file.read()
+    
+    render_doc_text(image, image_content, args.out_file)
     # [END vision_document_text_tutorial_run_application]
 # [END vision_document_text_tutorial]
