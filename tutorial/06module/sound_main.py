@@ -13,3 +13,8 @@ echo.echofilter(input, output, delay=0.7, atten=4)
 #サブモジュールechoをロード。echofilterを直接利用できるようにする。
 from sound.effects.echo import echofilter
 echofilter(input, output, delay=0.7, atten=4)
+
+
+from sound.effects.surround import run1, run_echo_echofilter
+run1()
+run_echo_echofilter()
