@@ -1,4 +1,14 @@
 
+# サンプル
+
+
+
+```
+go run sample.go
+go run sample_web.go
+```
+
+
 
 # 文法
 
