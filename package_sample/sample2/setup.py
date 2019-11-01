@@ -13,6 +13,6 @@ setup(
     keywords='',
     install_requires=[
        'google-cloud-vision==0.30.1',
-       'pillow==5.0.0'
+       'pillow==6.2.0'
     ]
 )
