@@ -1,3 +1,7 @@
+
+# WIP
+
+
 # A sample twitter app to show interfacing between flask and redis
 
 This is totally python3 compatible
@@ -9,7 +13,17 @@ This is totally python3 compatible
 
     pip install -r requirements.txt
 
+    docker-compose up -d
+
     python runserver.py
+
+# お掃除
+
+
+```
+docker-compose down --rmi all
+```
+
 
 # Testing
 

@@ -1,6 +1,5 @@
 flask
-BeautifulSoup
+beautifulsoup4
 micawber
-pygments
 markdown
 peewee

@@ -71,7 +71,7 @@ class WebRTCUser(object):
         if not payload:
             payload = json.dumps(data)
         if payload != '{"event": "heartbeat"}':
-            print 'Emitting %s to %s' % (payload, self)
+            print('Emitting %s to %s' % (payload, self))
         self.messages.put_nowait(payload)
 
     def emit_to_rooms(self, event, **data):
@@ -98,12 +98,12 @@ class WebRTCRoom(object):
         return '<WebRTCRoom %s>' % self.name
 
     def user_join(self, user):
-        print "User %s is joining %s" % (user, self.name)
+        print("User %s is joining %s" % (user, self.name))
         if user in self.users:
             return
         self.users.append(user)
         user.rooms.append(self)
-        print user.id
+        print(user.id)
         self.emit('user_join', _exclude=user.id,
             username=user.username,
             room=self.name)
@@ -122,8 +122,7 @@ class WebRTCRoom(object):
         data['event'] = event
         payload = json.dumps(data)
         exclude = data.pop('_exclude', None)
-        print 'Room %s emitting %s to %s exlcuding %s' % \
-            (self.name, payload, self.users, exclude)
+        print('Room %s emitting %s to %s exlcuding %s' % (self.name, payload, self.users, exclude))
         for user in self.users:
             if exclude and user.id == exclude:
                 continue
@@ -143,9 +142,9 @@ class WebRTC(object):
         self.users_by_username = dict()
 
     def get_room(self, room):
-        print 'Getting room ', room
+        print('Getting room ', room)
         if room not in self.rooms:
-            print 'Room not found, creating.'
+            print('Room not found, creating.')
             self.rooms[room] = WebRTCRoom(room)
         return self.rooms[room]
 
