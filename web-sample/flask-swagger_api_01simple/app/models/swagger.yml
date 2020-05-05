@@ -7,7 +7,7 @@ consumes:
   - application/json
 produces:
   - application/json
-basePath: /
+basePath: /api
 paths:
   /user:
     get:
@@ -67,30 +67,30 @@ paths:
                   type: string
                 timestamp:
                   type: string
-  /file_uploader:
-    post:
-      operationId: create
-      x-swagger-router-controller: app.controllers.file_uploader_controller
-      tags:
-        - Upload
-      consumes:
-        - multipart/form-data
-      parameters:
-        - name: file
-          in: formData
-          type: file
-          required: true
-        - name: output_file_name
-          in: formData
-          type: string
-          required: true
-        - name: count
-          in: formData
-          type: integer
-          required: true
-      responses:
-        201:
-          description: Success
+  # /file_uploader:
+  #   post:
+  #     operationId: create
+  #     x-swagger-router-controller: app.controllers.file_uploader_controller
+  #     tags:
+  #       - Upload
+  #     consumes:
+  #       - multipart/form-data
+  #     parameters:
+  #       - name: file
+  #         in: formData
+  #         type: file
+  #         required: true
+  #       - name: output_file_name
+  #         in: formData
+  #         type: string
+  #         required: true
+  #       - name: count
+  #         in: formData
+  #         type: integer
+  #         required: true
+  #     responses:
+  #       201:
+  #         description: Success
   # /multi_file_uploader:
   #   post:
   #     operationId: create_multi_file

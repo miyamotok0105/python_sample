@@ -4,6 +4,7 @@
 
 ```
 pip install -r requirements.txt
+pip install connexion[swagger-ui] --user
 ```
 
 起動    
@@ -48,6 +49,7 @@ paths:
 
 ## 設定
 
+動かん。    
 
 ```
 http://localhost:8080/api/ui/#/
